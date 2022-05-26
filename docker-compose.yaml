@@ -1,0 +1,20 @@
+version: '3.4'
+
+services:
+  webmvc:
+    image: 2kmiguel64/frontend-calendar
+    ports:
+      - "3000:3000"
+    depends_on:
+      - auth-api
+      - events-api
+    
+  auth-api:
+    image: 2kmiguel64/api-auth
+    ports:
+      - "4000:4000"
+
+  events-api:
+    image: 2kmiguel64/api-events
+    ports:
+      - "4001:4001"

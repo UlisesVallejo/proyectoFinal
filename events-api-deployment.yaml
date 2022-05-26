@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+      app: events-api
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.26.1 (a9d05d509)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: events-api
+  name: events-api
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      io.kompose.service: events-api
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.26.1 (a9d05d509)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: events-api
+    spec:
+      containers:
+        - image: 2kmiguel64/api-events
+          name: events-api
+          ports:
+            - containerPort: 4001
+          resources: {}
+      restartPolicy: Always
+status: {}
